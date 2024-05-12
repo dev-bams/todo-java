@@ -54,7 +54,17 @@ public class Main {
     }
 
     public static void deleteTasks() {
-        System.out.println("delete tasks");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter task id: ");
+        UUID id = UUID.fromString(scanner.nextLine());
+        ArrayList<TodoItem> filteredTodoItems = new ArrayList<>();
+        for (TodoItem todoItem : todoItems) {
+            if (todoItem.getId().equals(id)) {
+                continue;
+            }
+            filteredTodoItems.add(todoItem);
+        }
+        todoItems = filteredTodoItems;
     }
 
     public static void exit() {
